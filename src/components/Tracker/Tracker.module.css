@@ -1,0 +1,11 @@
+.Tracker {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    background-color: #ffffff;
+    top: 30px;
+    bottom: 30px;
+    left: 30px;
+    right: 30px;
+    border-radius: 30px;
+}
