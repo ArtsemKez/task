@@ -1,0 +1,21 @@
+.TableItem{
+    display: flex;
+    border: #cccccc solid 2px;
+    border-radius: 5px;
+    margin-block: 5px;
+    height: 32px;
+    padding-top: 2.5px;
+    min-width: 415px;
+}
+
+.from{
+    padding-left: 5px;
+    width: 50%;
+    min-width: 220px;
+}
+
+.to{
+    padding-left: 5px;
+    width: 50%;
+    min-width: 220px;
+}

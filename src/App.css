@@ -1,18 +1,6 @@
-/*#right_panel {*/
-/*    position: absolute;*/
-/*    width: 96px;*/
-/*    padding-left: 4px;*/
-/*    height: 100%;*/
-/*    right: 0;*/
-/*    background-color: #f0f0f0;*/
-/*}*/
-
-/*#resize {*/
-/*    background-color: #ccc;*/
-/*    position: absolute;*/
-/*    left: 0;*/
-/*    width: 40px;*/
-/*    height: 100%;*/
-/*    cursor: w-resize;*/
-
-/*}*/
+.App{
+    position: absolute;
+    background-color: #cccccc;
+    height: 100%;
+    width: 100%;
+}

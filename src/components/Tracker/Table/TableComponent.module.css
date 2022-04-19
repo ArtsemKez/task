@@ -15,12 +15,17 @@
     border-top-left-radius: 20px;
 }
 
+.tableItems{
+    overflow: auto;
+    width: 100%;
+}
+
 .resize {
-    background-color: #757575;
+    background-color: #ccc;
     position: absolute;
-    right: 0;
-    width: 10px;
+    right: -15px;
+    width: 15px;
     height: 100%;
-    z-index: 10;
     cursor: w-resize;
+    z-index: 10;
 }
