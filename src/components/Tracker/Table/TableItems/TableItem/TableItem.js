@@ -1,8 +1,9 @@
 import React from "react";
 import style from "./TableItem.module.css"
-import {Select} from 'antd';
+import {Button, Select} from 'antd';
 import {useDispatch} from "react-redux";
 import {actions} from "../../../../../redux/trackerReducer";
+import {CloseOutlined} from "@ant-design/icons";
 
 
 export const TableItem = ({route}) => {
@@ -11,16 +12,16 @@ export const TableItem = ({route}) => {
 
     const {Option} = Select;
 
-    function onChangeFrom(value) {
+    const onChangeFrom = (value) => {
         dispatch(actions.selectRouteFrom(route.id, value))
     }
 
-    function onChangeTo(value) {
+    const onChangeTo = (value) => {
         dispatch(actions.selectRouteTo(route.id, value))
     }
 
-    function onSearch(val) {
-        console.log('search:', val);
+    const onDeleteRoute = () => {
+        dispatch(actions.deleteRoute(route.id))
     }
 
     return (
@@ -34,7 +35,6 @@ export const TableItem = ({route}) => {
                     placeholder="Город отправления"
                     optionFilterProp="children"
                     onChange={onChangeFrom}
-                    onSearch={onSearch}
                     filterOption={(input, option) =>
                         option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
                     }
@@ -55,7 +55,6 @@ export const TableItem = ({route}) => {
                     placeholder="Город прибытия"
                     optionFilterProp="children"
                     onChange={onChangeTo}
-                    onSearch={onSearch}
                     filterOption={(input, option) =>
                         option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
                     }
@@ -67,6 +66,9 @@ export const TableItem = ({route}) => {
                     <Option value="Warsaw">Варшава</Option>
                 </Select>
             </div>
+            <Button className={style.delete} onClick={onDeleteRoute} type={'primary'} danger>
+                <CloseOutlined/>
+            </Button>
         </div>
     )
 }
