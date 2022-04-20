@@ -1,5 +1,5 @@
 import {combineReducers, compose, createStore} from "redux";
-import {TrackerReducer} from "./tracker-reducer";
+import {TrackerReducer} from "./trackerReducer";
 
 let rootReducer = combineReducers({
     trackerPage: TrackerReducer

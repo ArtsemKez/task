@@ -1,21 +1,27 @@
 import React from "react";
 import style from "./TableItem.module.css"
 import {Select} from 'antd';
+import {useDispatch} from "react-redux";
+import {actions} from "../../../../../redux/trackerReducer";
 
 
 export const TableItem = ({route}) => {
 
+    const dispatch = useDispatch()
+
     const {Option} = Select;
 
-    function onChange(value) {
-        console.log(`selected ${value}`);
+    function onChangeFrom(value) {
+        dispatch(actions.selectRouteFrom(route.id, value))
+    }
+
+    function onChangeTo(value) {
+        dispatch(actions.selectRouteTo(route.id, value))
     }
 
     function onSearch(val) {
         console.log('search:', val);
     }
-
-    debugger
 
     return (
         <div className={style.TableItem}>
@@ -27,7 +33,7 @@ export const TableItem = ({route}) => {
                     showSearch
                     placeholder="Город отправления"
                     optionFilterProp="children"
-                    onChange={onChange}
+                    onChange={onChangeFrom}
                     onSearch={onSearch}
                     filterOption={(input, option) =>
                         option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
@@ -48,7 +54,7 @@ export const TableItem = ({route}) => {
                     showSearch
                     placeholder="Город прибытия"
                     optionFilterProp="children"
-                    onChange={onChange}
+                    onChange={onChangeTo}
                     onSearch={onSearch}
                     filterOption={(input, option) =>
                         option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0

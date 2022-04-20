@@ -3,12 +3,11 @@ import styles from "./TableItems.module.css"
 import {TableItem} from "./TableItem/TableItem";
 import {Button} from "antd";
 import {useSelector} from "react-redux";
-import {getRoutesItems} from "../../../../redux/tracker-selectors";
+import {getRoutesItems} from "../../../../redux/trackerSelectors";
 
 export const TableItems = () => {
 
     const routesItems = useSelector(getRoutesItems)
-    debugger
 
     return(
         <div className={styles.TableItemsBody}>
