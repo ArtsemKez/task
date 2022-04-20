@@ -1,7 +1,5 @@
 let initialState = {
-    routesItems: [
-
-    ]
+    routesItems: []
 }
 
 export const TrackerReducer = (state = initialState, actions) => {
