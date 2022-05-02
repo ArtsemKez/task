@@ -5,6 +5,7 @@
     margin-block: 5px;
     height: 32px;
     min-width: 460px;
+    cursor: pointer;
 }
 
 .from{

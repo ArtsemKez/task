@@ -9,23 +9,29 @@ import {CloseOutlined} from "@ant-design/icons";
 export const TableItem = ({route}) => {
 
     const dispatch = useDispatch()
-
     const {Option} = Select;
 
     const onChangeFrom = (value) => {
         dispatch(actions.selectRouteFrom(route.id, value))
+        clickingOnARoute()
     }
 
     const onChangeTo = (value) => {
         dispatch(actions.selectRouteTo(route.id, value))
+        clickingOnARoute()
     }
 
     const onDeleteRoute = () => {
         dispatch(actions.deleteRoute(route.id))
     }
 
+    const clickingOnARoute = () => {
+        dispatch(actions.setCoordinatesForFrom(route.from))
+        dispatch(actions.setCoordinatesForTo(route.to))
+    }
+
     return (
-        <div className={style.TableItem}>
+        <div onClick={clickingOnARoute} className={style.TableItem}>
             <div className={style.from}>
                 Откуда: {' '}
                 <Select

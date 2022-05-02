@@ -1,5 +1,32 @@
 let initialState = {
-    routesItems: []
+    coordinates: [
+        {
+            city: 'Minsk',
+            coordinates: [53.9024716, 27.5618225]
+        },
+         {
+            city: 'Moscow',
+            coordinates: [55.7504461, 37.6174943]
+        },
+         {
+            city: 'Saint Petersburg',
+            coordinates: [59.938732, 30.316229]
+        },
+         {
+            city: 'Vilnius',
+            coordinates: [54.6870458, 25.2829111]
+        },
+         {
+            city: 'Warsaw',
+            coordinates: [52.2337172, 21.071432235636493]
+        },
+    ],
+    routesItems: [
+        {id: 0, from: 'Minsk', to: 'Moscow'},
+        {id: 1, from: 'Moscow', to: 'Saint Petersburg'},
+        {id: 2, from: 'Vilnius', to: 'Warsaw'},
+    ],
+    points: [],
 }
 
 export const TrackerReducer = (state = initialState, actions) => {
@@ -42,6 +69,26 @@ export const TrackerReducer = (state = initialState, actions) => {
             }
             return {...state, routesItems: [...routesForDeleteRoute]}
 
+        case 'TASK/TRACKER/SET_COORDINATES_FROM':
+            let pointsForSetCoordinatesForFrom = JSON.parse(JSON.stringify(state.points))
+
+            pointsForSetCoordinatesForFrom[0] = state.coordinates.filter((from)=>{
+                return from.city === actions.from
+            })[0].coordinates
+
+            debugger
+
+            return {...state, points: [...pointsForSetCoordinatesForFrom]}
+
+        case 'TASK/TRACKER/SET_COORDINATES_TO':
+            let pointsForSetCoordinatesForTo = JSON.parse(JSON.stringify(state.points))
+
+            pointsForSetCoordinatesForTo[1] = state.coordinates.filter((to)=>{
+                return to.city === actions.to
+            })[0].coordinates
+
+            return {...state, points: [...pointsForSetCoordinatesForTo]}
+
         default:
             return state
     }
@@ -52,4 +99,6 @@ export const actions = {
     selectRouteTo: (id, value) => ({type: 'TASK/TRACKER/SELECT_ROUTE_TO', id, value}),
     addRoute: () => ({type: 'TASK/TRACKER/ADD_ROUTE'}),
     deleteRoute: (id) => ({type: 'TASK/TRACKER/DELETE_ROUTE', id}),
+    setCoordinatesForFrom: (from) => ({type: 'TASK/TRACKER/SET_COORDINATES_FROM', from}),
+    setCoordinatesForTo: (to) => ({type: 'TASK/TRACKER/SET_COORDINATES_TO', to}),
 }
